@@ -4,9 +4,9 @@
 #include <assert.h>
 
 #ifdef GB_BIG_ENDIAN
-#define BESS_NAME "SameBoy v" GB_VERSION " (Big Endian)"
+#define BESS_NAME "TechnoBoy v" GB_VERSION " (Big Endian)"
 #else
-#define BESS_NAME "SameBoy v" GB_VERSION
+#define BESS_NAME "TechnoBoy v" GB_VERSION
 #endif
 
 _Static_assert((GB_SECTION_OFFSET(core_state) & 7) == 0, "Section core_state is not aligned");
@@ -306,7 +306,7 @@ static bool verify_and_update_state_compatibility(GB_gameboy_t *gb, GB_gameboy_t
     *attempt_bess = false;
     
     if (gb->version != save->version) {
-        GB_log(gb, "The save state is for a different version of SameBoy.\n");
+        GB_log(gb, "The save state is for a different version of TechnoBoy.\n");
         *attempt_bess = true;
         return false;
     }
@@ -358,7 +358,7 @@ static bool verify_and_update_state_compatibility(GB_gameboy_t *gb, GB_gameboy_t
         save->model = gb->model;
         return true;
     }
-    GB_log(gb, "This save state is for an unknown Game Boy model\n");
+    GB_log(gb, "This save state is for an unknown Game Boy model.\n");
     return false;
 }
 
