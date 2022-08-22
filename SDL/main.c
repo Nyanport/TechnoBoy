@@ -758,7 +758,7 @@ restart:
     GB_load_battery(&gb, battery_save_path);
     if (GB_save_battery_size(&gb)) {
         if (!is_path_writeable(battery_save_path)) {
-            GB_log(&gb, "The save path for this ROM is not writeable, progress will not be saved.\n");
+            GB_log(&gb, "The save path for this ROM is not writeable, so progress will not be saved.\n");
         }
     }
     
@@ -767,7 +767,7 @@ restart:
     static char start_text[64];
     static char title[17];
     GB_get_rom_title(&gb, title);
-    sprintf(start_text, "SameBoy v" GB_VERSION "\n%s\n%08X", title, GB_get_rom_crc32(&gb));
+    sprintf(start_text, "TechnoBoy v" GB_VERSION "\n%s\n%08X", title, GB_get_rom_crc32(&gb));
     show_osd_text(start_text);
 
     /* Configure symbols */
@@ -858,7 +858,7 @@ int main(int argc, char **argv)
     stop_on_start = get_arg_flag("--stop-debugger", &argc, argv) || get_arg_flag("-s", &argc, argv);
 
     if (argc > 2 || (argc == 2 && argv[1][0] == '-')) {
-        fprintf(stderr, "SameBoy v" GB_VERSION "\n");
+        fprintf(stderr, "TechnoBoy v" GB_VERSION "\n");
         fprintf(stderr, "Usage: %s [--fullscreen|-f] [--nogl] [--stop-debugger|-s] [rom]\n", argv[0]);
         exit(1);
     }
@@ -872,10 +872,10 @@ int main(int argc, char **argv)
     SDL_Init(SDL_INIT_EVERYTHING & ~SDL_INIT_AUDIO);
     if ((console_supported = CON_start(completer))) {
         CON_set_repeat_empty(true);
-        CON_printf("SameBoy v" GB_VERSION "\n");
+        CON_printf("TechnoBoy v" GB_VERSION "\n");
     }
     else {
-        fprintf(stderr, "SameBoy v" GB_VERSION "\n");
+        fprintf(stderr, "TechnoBoy v" GB_VERSION "\n");
     }
     
     strcpy(prefs_path, resource_path("prefs.bin"));
